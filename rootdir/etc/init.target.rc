@@ -106,6 +106,9 @@ on boot
 
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
+    
+    # default country code
+    setprop ro.boot.wificountrycode 00
 
     # LED full scale current is 8mA and limit it to 2mA
     write /sys/class/leds/button-backlight/max_brightness 64
