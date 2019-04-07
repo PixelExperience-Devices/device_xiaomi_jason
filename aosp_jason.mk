@@ -21,10 +21,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from jason device
 $(call inherit-product, device/xiaomi/jason/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common PE stuff.
+$(call inherit-product, vendor/aosp/config/common.mk)
 
-PRODUCT_NAME := lineage_jason
+CUSTOM_BUILD_TYPE := OFFICIAL
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_GAPPS_ARCH := arm64
+KBUILD_BUILD_USER := sastimenes
+KBUILD_BUILD_HOST := jason
+
+PRODUCT_NAME := aosp_jason
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := jason
 PRODUCT_MANUFACTURER := Xiaomi
