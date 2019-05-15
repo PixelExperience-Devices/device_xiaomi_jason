@@ -218,28 +218,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     Camera2 \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    camera.sdm660 \
-    libmm-qcamera
+    android.hardware.camera.provider@2.4-service
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=1 \
+    persist.camera.dxo=1 \
     persist.camera.hist.high=20 \
     persist.camera.hist.drc=1.2 \
     persist.camera.sat.enable=1 \
-    persist.vendor.camera.expose.aux=1 \
-    persist.vendor.camera.sat.enable=1 \
+    persist.camera.expose.aux=1 \
     persist.camera.instant.aec=1 \
-    persist.vendor.camera.instant.aec=1 \
-    persist.vendor.camera.ae.instant.bound=20 \
-    persist.vendor.camera.set.afd=4 \
+    persist.camera.instant.aec=1 \
+    persist.camera.ae.instant.bound=20 \
+    persist.camera.set.afd=4 \
     persist.camera.feature.cac=1 \
-    persist.vendor.camera.feature.cac=1 \
     persist.camera.fovc.enable=1 \
-    persist.vendor.camera.fovc.enable=1 \
-    persist.vendor.dualcam.lpm.enable=1 \
-    persist.vendor.dualcam.defer.enable=1 \
-    vendor.camera.hal1.packagelist=com.whatsapp,com.facebook.katana,com.instagram.android,com.snapchat.android \
-    vendor.camera.aux.packageblacklist=com.tencent.mm
+    persist.dualcam.lpm.enable=1 \
+    persist.dualcam.defer.enable=1 \
+    camera.hal1.packagelist=com.whatsapp,com.facebook.katana,com.instagram.android,com.snapchat.android \
+    camera.aux.packageblacklist=com.tencent.mm
 
 # ConfigPanel
 PRODUCT_PACKAGES += \
@@ -392,6 +389,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    video.disable.ubwc=1 \
     vendor.video.disable.ubwc=1
 
 # Net
@@ -546,6 +544,9 @@ PRODUCT_PACKAGES += \
     libstdc++.vendor \
     vndk-ext \
     vndk_package
+
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v27/arm/arch-arm-armv7-a-neon/shared/vndk-core/android.frameworks.sensorservice@1.0.so:$(TARGET_COPY_OUT_VENDOR)/lib/android.frameworks.sensorservice@1.0-v27.so
 
 # Wifi
 PRODUCT_PACKAGES += \
